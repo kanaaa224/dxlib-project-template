@@ -18,6 +18,33 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\Objects\GameObject.h" />
+    <ClInclude Include="source\Objects\GameObjectBase.h" />
+    <ClInclude Include="source\Scene\InGameScene.h" />
+    <ClInclude Include="source\Scene\SceneBase.h" />
+    <ClInclude Include="source\Scene\SceneManager.h" />
+    <ClInclude Include="source\Scene\TitleScene.h" />
+    <ClInclude Include="source\Utility\Collision.h" />
+    <ClInclude Include="source\Utility\FPS.h" />
+    <ClInclude Include="source\Utility\InputCtrl.h" />
+    <ClInclude Include="source\Utility\AppConfig.h" />
+    <ClInclude Include="source\Utility\ResourceManager.h" />
+    <ClInclude Include="source\Utility\Vector2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Objects\GameObjectBase.cpp" />
+    <ClCompile Include="source\Scene\InGameScene.cpp" />
+    <ClCompile Include="source\Scene\SceneManager.cpp" />
+    <ClCompile Include="source\Scene\TitleScene.cpp" />
+    <ClCompile Include="source\Utility\Collision.cpp" />
+    <ClCompile Include="source\Utility\FPS.cpp" />
+    <ClCompile Include="source\Utility\InputCtrl.cpp" />
+    <ClCompile Include="source\Utility\AppConfig.cpp" />
+    <ClCompile Include="source\Utility\ResourceManager.cpp" />
+    <ClCompile Include="source\Utility\Vector2D.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,16 +165,6 @@
       <AdditionalLibraryDirectories>C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\fps.cpp" />
-    <ClCompile Include="source\inputCtrl.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="source\fps.h" />
-    <ClInclude Include="source\inputCtrl.h" />
-    <ClInclude Include="source\main.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

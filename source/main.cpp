@@ -1,35 +1,36 @@
-﻿#include "main.h"
+﻿#include"DxLib.h"
+#include"Scene/SceneManager.h"
 
-int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd) {
-    if (ChangeWindowMode(TRUE) != DX_CHANGESCREEN_OK) return -1;
-    if (SetGraphMode(_SCREEN_WIDTH_, _SCREEN_HEIGHT_, _SCREEN_COLOR_BIT_32_) != DX_CHANGESCREEN_OK) return -1;
+int WINAPI WinMain(
+    _In_ HINSTANCE hInstance,
+    _In_opt_ HINSTANCE hPrevInstance,
+    _In_ LPSTR lpCmdLine,
+    _In_ int nShowCm
+) {
+    SceneManager* scene_manager = nullptr;
 
-    if (DxLib_Init() == -1) return -1;
+    int result = 0;
 
-    SetDrawScreen(DX_SCREEN_BACK);
+    try {
+        scene_manager = new SceneManager();
 
-    FPS::SetLimitRate(_SCREEN_FPS_);
-    FPS::SetUpdateInterval(1000);
+        scene_manager->WakeUp();
+        scene_manager->Run();
+        scene_manager->Shutdown();
+    }
+    catch (const char* error_log) {
+        OutputDebugString(error_log);
 
-    while (ProcessMessage() == 0) {
-        ClearDrawScreen();
-
-        if (GetMainWindowHandle() == GetForegroundWindow()) InputCtrl::Update();
-
-        FPS::Limit();
-        FPS::Update();
-
-#ifdef DEBUG
-        SetFontSize(16);
-        DrawFormatString(10, 10, GetColor(255, 255, 255), "FPS: %0.0f", FPS::Get());
-
-        if (InputCtrl::GetKeyState(KEY_INPUT_ESCAPE) || InputCtrl::GetButtonState(XINPUT_BUTTON_BACK)) break;
-#endif
-
-        ScreenFlip();
+        result = -1;
     }
 
-    DxLib_End();
+    if (scene_manager != nullptr) {
+        scene_manager->Shutdown();
 
-    return 0;
+        delete scene_manager;
+
+        scene_manager = nullptr;
+    }
+
+    return result;
 }
