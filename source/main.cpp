@@ -14,7 +14,7 @@ int WINAPI WinMain(
     try {
         scene_manager = new SceneManager();
 
-        scene_manager->WakeUp();
+        scene_manager->Startup();
         scene_manager->Run();
         scene_manager->Shutdown();
     }

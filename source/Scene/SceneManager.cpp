@@ -32,7 +32,7 @@ SceneManager::~SceneManager() {
     Shutdown();
 }
 
-void SceneManager::WakeUp() {
+void SceneManager::Startup() {
     ChangeWindowMode(TRUE);
 
     SetGraphMode(D_SCREEN_WIDTH, D_SCREEN_HEIGHT, D_COLOR_BIT);
@@ -74,7 +74,7 @@ void SceneManager::Run() {
 
         eSceneType next_scene_type = current_scene->Update(GetDeltaSecond());
 
-        Graph();
+        Draw();
 
         if (next_scene_type == eSceneType::exit) break;
 
@@ -96,7 +96,7 @@ void SceneManager::Shutdown() {
     DxLib_End();
 }
 
-void SceneManager::Graph() const {
+void SceneManager::Draw() const {
     ClearDrawScreen();
 
     current_scene->Draw();

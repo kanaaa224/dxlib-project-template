@@ -15,12 +15,12 @@ public:
     SceneManager();
     ~SceneManager();
 
-    void WakeUp();
+    void Startup();
     void Run();
     void Shutdown();
 
 private:
-    void Graph() const;
+    void Draw() const;
     void ChangeScene(eSceneType next_type);
     SceneBase* CreateScene(eSceneType next_type);
 };

@@ -8,10 +8,13 @@
 
 Collision::Collision() :
     is_blocking(false),
+
     box_size(0.0f),
     pivot(0.0f),
+
     object_type(eObjectType::none),
     hit_object_type(),
+
     position(0.0f) {}
 
 Collision::~Collision() {}
@@ -33,28 +36,28 @@ Vector2D Collision::GetSize() {
     return box_size;
 }
 
-void Collision::SetObjectType(const eObjectType& FUNC_objecttype) {
-    object_type = FUNC_objecttype;
+void Collision::SetObjectType(const eObjectType& objectType) {
+    object_type = objectType;
 }
 
-void Collision::SetHitObjectType(const std::vector<eObjectType>& FUNC_hitobjecttype) {
-    hit_object_type = FUNC_hitobjecttype;
+void Collision::SetHitObjectType(const std::vector<eObjectType>& hitObjectType) {
+    hit_object_type = hitObjectType;
 }
 
-bool Collision::IsCheckHitTarget(eObjectType FUNC_hitobject) const {
+bool Collision::IsCheckHitTarget(eObjectType hitObject) const {
     for (eObjectType type : hit_object_type) {
-        if (type == FUNC_hitobject) return true;
+        if (type == hitObject) return true;
     }
 
     return false;
 }
 
-bool Collision::CheckCollision(const Collision& other) const {
+bool Collision::CheckCollision(const Collision& target) const {
     Vector2D A_min = position - (box_size / 2) + pivot;
     Vector2D A_max = position + (box_size / 2) + pivot;
 
-    Vector2D B_min = other.position - (other.box_size / 2) + other.pivot;
-    Vector2D B_max = other.position + (other.box_size / 2) + other.pivot;
+    Vector2D B_min = target.position - (target.box_size / 2) + target.pivot;
+    Vector2D B_max = target.position + (target.box_size / 2) + target.pivot;
 
     if (A_min.x < B_max.x &&
         A_max.x > B_min.x &&

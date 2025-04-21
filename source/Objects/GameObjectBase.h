@@ -15,17 +15,19 @@ enum class eMobilityType {
     movable,
 };
 
+enum class eType {
+    player,
+    enemy,
+
+    other
+};
+
 enum class eCollisionSide {
     top,
     bottom,
     left,
     right,
     none
-};
-
-enum class eType {
-    player,
-    enemy
 };
 
 class GameObjectBase {
@@ -38,10 +40,11 @@ protected:
     int image;
     int z_layer;
 
-    eMobilityType mobility;
-
     bool flip_flag;
     bool draw_collision_box;
+
+    eMobilityType mobility;
+    eType type;
 
     Collision collision;
 

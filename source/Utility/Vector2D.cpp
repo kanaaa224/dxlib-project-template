@@ -44,6 +44,14 @@ Vector2D& Vector2D::operator /= (const Vector2D& v) {
     return *this;
 }
 
+float Vector2D::Dot(const Vector2D& a) {
+    return ((a.x * a.x) + (a.y * a.y));
+}
+
+float Vector2D::Dot(const Vector2D& a, const Vector2D& b) {
+    return ((a.x * b.x) + (a.y * b.y));
+}
+
 float Vector2D::SqrLength() const {
     return Vector2D::Dot(*this);
 }
@@ -54,14 +62,6 @@ float Vector2D::Length() const {
 
 Vector2D Vector2D::Normalize() const {
     return *this / Length();
-}
-
-float Vector2D::Dot(const Vector2D& a) {
-    return ((a.x * a.x) + (a.y * a.y));
-}
-
-float Vector2D::Dot(const Vector2D& a, const Vector2D& b) {
-    return ((a.x * b.x) + (a.y * b.y));
 }
 
 float Vector2D::Cross(const Vector2D& a, const Vector2D& b) {

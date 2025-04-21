@@ -77,7 +77,7 @@ void ResourceManager::UnLoadSounds() {
 void ResourceManager::CreateImagesResource(std::string file_path) {
     int handle = LoadGraph(file_path.c_str());
 
-    if (handle == -1) throw (file_path + " の読み込みに失敗\n");
+    if (handle == -1) throw ("Load Error: " + file_path + "\n");
 
     images_container[file_path].push_back(handle);
 }
@@ -87,7 +87,7 @@ void ResourceManager::CreateImagesResource(std::string file_name, int all_num, i
 
     int result = LoadDivGraph(file_name.c_str(), all_num, num_x, num_y, size_x, size_y, handle);
 
-    if (result == -1) throw (file_name + " の読み込みに失敗\n");
+    if (result == -1) throw ("Load Error: " + file_name + "\n");
 
     for (int i = 0; i < all_num; i++) {
         images_container[file_name].push_back(handle[i]);
@@ -99,7 +99,7 @@ void ResourceManager::CreateImagesResource(std::string file_name, int all_num, i
 void ResourceManager::CreateSoundsResource(std::string file_path) {
     int handle = LoadSoundMem(file_path.c_str());
 
-    if (handle == -1) throw (file_path + " の読み込みに失敗\n");
+    if (handle == -1) throw ("Load Error: " + file_path + "\n");
 
     sounds_container[file_path] = handle;
 }

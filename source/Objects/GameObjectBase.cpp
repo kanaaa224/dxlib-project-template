@@ -9,13 +9,18 @@
 
 GameObjectBase::GameObjectBase() :
     owner_scene(nullptr),
+
     location(0.0f),
     velocity(0.0f),
+
     image(NULL),
     z_layer(0),
-    mobility(eMobilityType::stationary),
+    
     flip_flag(false),
-    draw_collision_box(false) {}
+    draw_collision_box(false),
+
+    mobility(eMobilityType::stationary),
+    type(eType::other) {}
 
 GameObjectBase::~GameObjectBase() {}
 

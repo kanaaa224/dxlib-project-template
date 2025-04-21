@@ -10,9 +10,12 @@
 
 enum class eObjectType : unsigned char {
     none,
+
     wall,
     ground,
+
     item,
+
     player,
     enemy
 };
@@ -40,8 +43,8 @@ public:
     void SetSize(const float& width, const float& height);
     Vector2D GetSize();
 
-    void SetObjectType(const eObjectType& FUNC_objecttype);
-    void SetHitObjectType(const std::vector<eObjectType>& FUNC_hitobjecttype);
-    bool IsCheckHitTarget(eObjectType FUNC_hitobject) const;
-    bool CheckCollision(const Collision& other) const;
+    void SetObjectType(const eObjectType& objectType);
+    void SetHitObjectType(const std::vector<eObjectType>& hitObjectType);
+    bool IsCheckHitTarget(eObjectType hitObject) const;
+    bool CheckCollision(const Collision& target) const;
 };
